@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生记录</title>
+    <link rel="stylesheet" href="/css/layui.css">
+</head>
+<body>
+
+    <!-- 添加学生 -->
+    <div class="layui-form" id="addStudent" style="display: none;">
+        <div class="layui-form-item">
+            <label class="layui-form-label">所属院系</label>
+            <div class="layui-input-block" style="width: 250px;">
+                <select id="colleage"name="colleage" >
+                    <option value="" selected></option>
+                    <option value="计算机科学与工程学院">计算机科学与工程学院</option>
+                    <option value="马克思主义学院">马克思主义学院</option>
+                    <option value="物电学院">物电学院</option>
+                    <option value="物电学院">外国语学院</option>
+                    <option value="传媒学院">传媒学院</option>
+                    <option value="数学与统计学院">数学与统计学院</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">班级名称</label>
+            <div class="layui-input-block">
+                <input type="text" id="classname" name="classname" style="width: 250px;" lay-verify="required"
+                       placeholder="请输入" class="layui-input ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">学号</label>
+            <div class="layui-input-block">
+                <input type="text" id="stuno" name="stuno" style="width: 250px;" lay-verify="required"
+                       placeholder="请输入" class="layui-input ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <input type="text" id="stuname" name="stuname" style="width: 250px;" lay-verify="required"
+                       placeholder="请输入" class="layui-input ">
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机</label>
+            <div class="layui-input-block">
+                <input type="text" id="phone" name="phone" style="width: 250px;" lay-verify="required"
+                       placeholder="请输入" class="layui-input ">
+            </div>
+        </div>
+    </div>
+
+    <!--&lt;!&ndash;  查看数据  &ndash;&gt;
+    <div id="StudentDetail" style="display: none;margin-top: 20px;">
+        <div class="layui-form-item">
+            <label class="layui-form-label">班级ID</label>
+            <div class="layui-input-block">
+                <input type="text" id="claidShow" name="claidShow" readonly style="width: 250px;" lay-verify="required"
+                       class="layui-input ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">权限ID</label>
+            <div class="layui-input-block">
+                <input type="text" id="roleidShow" name="roleidShow" readonly style="width: 250px;" lay-verify="required"
+                       class="layui-input ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">学号</label>
+            <div class="layui-input-block">
+                <input type="text" id="stunoShow" name="stunoShow" readonly style="width: 250px;" lay-verify="required"
+                       class="layui-input ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <input type="text" id="stunameShow" name="stunameShow" readonly style="width: 250px;" lay-verify="required"
+                       class="layui-input ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-block">
+                <input type="text" id="sexShow" name="sexShow" readonly style="width: 250px;" lay-verify="required"
+                       class="layui-input ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-block">
+                <input type="text" id="emailShow" name="emailShow" readonly style="width: 250px;" lay-verify="required"
+                       class="layui-input ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机</label>
+            <div class="layui-input-block">
+                <input type="text" id="phoneShow" name="phoneShow" readonly style="width: 250px;" lay-verify="required"
+                       class="layui-input ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">QQ</label>
+            <div class="layui-input-block">
+                <input type="text" id="qqShow" name="qqShow" readonly style="width: 250px;" lay-verify="required"
+                       class="layui-input ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">微信</label>
+            <div class="layui-input-block">
+                <input type="text" id="wechatShow" name="wechatShow" readonly style="width: 250px;" lay-verify="required"
+                       class="layui-input ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">毕业年份</label>
+            <div class="layui-input-block">
+                <input type="text" id="leaveyearShow" name="leaveyearShow" readonly style="width: 250px;" lay-verify="required"
+                       class="layui-input ">
+            </div>
+        </div>
+    </div>-->
+
+    <!--&lt;!&ndash;  搜索  &ndash;&gt;
+    <div class="layui-form layui-card-header" style="margin-top: 20px;margin-bottom: 50px">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">班级ID</label>
+                <div class="layui-input-block">
+                    <input type="text" name="claid" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">学号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="stuno" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">姓名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="stuname" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">性别</label>
+                <div class="layui-input-block">
+                    <input type="text" name="sex" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <button class="layui-btn " lay-submit lay-filter="LAY-user-back-search">
+                    <i class="layui-icon layui-icon-search "></i>
+                </button>
+            </div>
+        </div>
+    </div>-->
+
+    <!--  数据表格  -->
+    <table class="layui-hide" id="studentTable" lay-filter="studentTable"></table>
+
+    <!--  操作三剑客  <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>-->
+
+    <script type="text/html" id="studentBar">
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+
+    <!--  添加数据按钮  -->
+    <script type="text/html" id="studentToolBar">
+        <div class="layui-btn-container">
+            <button class="layui-btn" lay-event="add">添加</button>
+        </div>
+    </script>
+
+
+    <script src='/layuiadmin/layui/layui.js'></script>
+    <script type="text/javascript">
+
+        layui.config({
+            base: '/layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: '/lib/index' //主入口模块
+        }).use(['jquery', 'layer', 'form', 'table', 'upload'], function () {
+            var $ = layui.jquery;
+            var layer = layui.layer;
+            var form = layui.form;
+            var table = layui.table;
+            var upload = layui.upload;
+
+
+
+            // 数据分页显示
+            table.render({
+                id: 'studentTable'
+                , elem: '#studentTable'
+                , height: 550
+                , toolbar: '#studentToolBar'
+                , defaultToolbar: ['filter', 'print', 'exports']
+                , url: '/student/all' //数据接口
+                , page: true //开启分页
+                , cols: [
+                    [ //表头
+                        {type: 'checkbox', fixed: 'left'}
+                        , {field: 'id', title: 'ID', sort: true, align: 'center'}
+                        , {field: 'colleage', title: '学院名称', sort: true, align: 'center'}
+                        , {field: 'classname', title: '班级名称', sort: true, align: 'center'}
+                        , {field: 'stuno', title: '学号', sort: true, align: 'center'}
+                        , {field: 'stuname', title: '姓名', sort: true, width: 80, align: 'center'}
+                        , {fixed: 'right', title: '操作', toolbar: "#studentBar", width: 160, align: 'center'}
+                    ]
+                ]
+            });
+
+
+
+
+          /*  // 搜索框
+            form.on('submit(LAY-user-back-search)', function(data){
+                var field = data.field //当前容器的全部表单字段，名值对形式：{name: value}
+                table.reload('studentTable', {
+                    where: field
+                });
+            });*/
+
+            //监听事件 添加
+            table.on('toolbar(studentTable)', function(obj){
+                $("#stuno").val(" ");
+                $("#stuname").val(" ");
+                $("#classname").val(" ");
+                $("#colleage").val(" ");
+                $("#phone").val(" ");
+                switch(obj.event){
+                    case 'add':
+                        layer.open({
+                            type: 1,
+                            title: "添加学生",
+                            content: $("#addStudent"),
+                            area: ['500px', '380px'],
+                            fixed: true, //固定
+                            resize: false,
+                            scrollbar: false,
+                            shadeClose: true,
+                            move: false,
+                            btn: ['确定添加', '取消'],
+                            // 确定按钮回调方法
+                            yes: function (index, layero) {
+                                $.post("/student/insert", {
+                                    stuno: $("#stuno").val(),
+                                    pwd: $("#stuno").val(),
+                                    stuname: $("#stuname").val(),
+                                    classname: $("#classname").val(),
+                                    colleage: $("#colleage").val(),
+                                    phone: $("#phone").val()
+                                }, function (res) {
+                                    if (res > 0){
+                                        layer.close(index);
+                                        layer.msg("添加成功！");
+                                        // 重新渲染
+                                        table.reload('studentTable', {
+                                            where: []
+                                        });
+                                    } else {
+                                        layer.open({
+                                            title: '提示',
+                                            content: "添加失败，请重新再试！"
+                                        })
+                                    }
+                                })
+                            }
+
+                        });
+                        break;
+                };
+            });
+
+            // 监听操作工具条
+            // 监听工具条
+            table.on('tool(studentTable)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+                var data = obj.data; //获得当前行数据
+                var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+                var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+
+     /*           if(layEvent === 'detail'){ //查看
+                    $("#claidShow").val(data.claid);
+                    $("#roleidShow").val(data.roleid);
+                    $("#stunoShow").val(data.stuno);
+                    $("#stunameShow").val(data.stuname);
+                    $("#sexShow").val(data.sex);
+                    $("#emailShow").val(data.email);
+                    $("#phoneShow").val(data.phone);
+                    $("#qqShow").val(data.qq);
+                    $("#wechatShow").val(data.wechat);
+                    $("#leaveyearShow").val(data.leaveyear);
+
+                    // 弹窗内容
+                    layer.open({
+                        type: 1,
+                        title: "学生信息",
+                        content: $("#StudentDetail"),
+                        area: ['800px', '650px'],
+                        fixed: true, //固定
+                        resize: false,
+                        scrollbar: false,
+                        shadeClose: true,
+                        move: false,
+                        btn: ['关闭'],
+                        yes: function (index, layero) {
+                            //如果设定了yes回调，需进行手工关闭
+                            layer.close(index);
+                        }
+                    });
+                } else*/ if(layEvent === 'del'){ //删除
+                    layer.confirm('确认删除？', {icon: 3, title: '提示'}, function(index){
+                        $.post({
+                            url: "/student/delete",
+                            data: {
+                                stuno: data.stuno
+                            },
+                            success: function(res) {
+                                if (res > 0){
+                                    layer.close(index);
+                                    layer.msg('删除成功!');
+                                    //重新渲染
+                                    table.reload('studentTable', {
+                                        where: []
+                                    });
+                                } else {
+                                    layer.open({
+                                        title: '提示',
+                                        content: '删除失败!,请重试。'
+                                    })
+                                }
+                            }
+                        })
+                    });
+                }/* else if(layEvent === 'edit'){ //编辑
+                    $("#claid").val(data.claid);
+                    $("#roleid").val(data.roleid);
+                    $("#stuno").val(data.stuno);
+                    $("#stuname").val(data.stuname);
+                    $("#sex").val(data.sex);
+                    $("#email").val(data.email);
+                    $("#phone").val(data.phone);
+                    $("#qq").val(data.qq);
+                    $("#wechat").val(data.wechat);
+                    $("#leaveyear").val(data.leaveyear);
+
+                    layer.open({
+                        type: 1,
+                        title: "编辑学生",
+                        content: $("#addStudent"),
+                        area: ['800px', '650px'],
+                        fixed: true, //固定
+                        resize: false,
+                        scrollbar: false,
+                        shadeClose: true,
+                        move: false,
+                        btn: ['确定更新', '取消'],
+                        // 确定按钮回调方法
+                        yes: function (index, layero) {
+                            $.post("/student/update", {
+                                stuid: data.stuid,
+                                claid: $("#claid").val(),
+                                roleid: $("#roleid").val(),
+                                stuno: $("#stuno").val(),
+                                sex: $("#sex").val(),
+                                password: $("#password").val(),
+                                stuname: $("#stuname").val(),
+                                email: $("#email").val(),
+                                phone: $("#phone").val(),
+                                qq: $("#qq").val(),
+                                wechat: $("#wechat").val()
+                            }, function (res) {
+                                if (res > 0){
+                                    layer.close(index);
+                                    layer.msg("更新成功！");
+                                    // 重新渲染
+                                    table.reload('studentTable', {
+                                        where: []
+                                    });
+                                } else {
+                                    layer.open({
+                                        title: '提示',
+                                        content: "更新失败，请重新再试！"
+                                    })
+                                }
+                            })
+                        }
+                    });
+                }*/
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

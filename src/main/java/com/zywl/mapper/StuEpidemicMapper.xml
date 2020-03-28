@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zywl.mapper.StuEpidemicMapper" >
+  <resultMap id="BaseResultMap" type="com.zywl.pojo.StuEpidemic" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="stuno" property="stuno" jdbcType="VARCHAR" />
+    <result column="stuname" property="stuname" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="CHAR" />
+    <result column="colleage" property="colleage" jdbcType="VARCHAR" />
+    <result column="classname" property="classname" jdbcType="VARCHAR" />
+    <result column="fillintdate" property="fillintdate" jdbcType="VARCHAR" />
+    <result column="isabroad" property="isabroad" jdbcType="CHAR" />
+    <result column="ishubei" property="ishubei" jdbcType="CHAR" />
+    <result column="iwuhan" property="iwuhan" jdbcType="CHAR" />
+    <result column="inwuhan" property="inwuhan" jdbcType="CHAR" />
+    <result column="ishubeicontact" property="ishubeicontact" jdbcType="CHAR" />
+    <result column="iswuhancontact" property="iswuhancontact" jdbcType="CHAR" />
+    <result column="inhubei" property="inhubei" jdbcType="CHAR" />
+    <result column="isgotoschool" property="isgotoschool" jdbcType="CHAR" />
+    <result column="isdistrust" property="isdistrust" jdbcType="CHAR" />
+    <result column="isdiagnose" property="isdiagnose" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, stuno, stuname, phone, colleage, classname, fillintdate, isabroad, ishubei, iwuhan, 
+    inwuhan, ishubeicontact, iswuhancontact, inhubei, isgotoschool, isdistrust, isdiagnose
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zywl.pojo.StuEpidemicExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from stu_epidemic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from stu_epidemic
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from stu_epidemic
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zywl.pojo.StuEpidemicExample" >
+    delete from stu_epidemic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zywl.pojo.StuEpidemic" >
+    insert into stu_epidemic (id, stuno, stuname, 
+      phone, colleage, classname, 
+      fillintdate, isabroad, ishubei, 
+      iwuhan, inwuhan, ishubeicontact, 
+      iswuhancontact, inhubei, isgotoschool, 
+      isdistrust, isdiagnose)
+    values (#{id,jdbcType=BIGINT}, #{stuno,jdbcType=VARCHAR}, #{stuname,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=CHAR}, #{colleage,jdbcType=VARCHAR}, #{classname,jdbcType=VARCHAR}, 
+      #{fillintdate,jdbcType=VARCHAR}, #{isabroad,jdbcType=CHAR}, #{ishubei,jdbcType=CHAR}, 
+      #{iwuhan,jdbcType=CHAR}, #{inwuhan,jdbcType=CHAR}, #{ishubeicontact,jdbcType=CHAR}, 
+      #{iswuhancontact,jdbcType=CHAR}, #{inhubei,jdbcType=CHAR}, #{isgotoschool,jdbcType=CHAR}, 
+      #{isdistrust,jdbcType=CHAR}, #{isdiagnose,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zywl.pojo.StuEpidemic" >
+    insert into stu_epidemic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="stuno != null" >
+        stuno,
+      </if>
+      <if test="stuname != null" >
+        stuname,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="colleage != null" >
+        colleage,
+      </if>
+      <if test="classname != null" >
+        classname,
+      </if>
+      <if test="fillintdate != null" >
+        fillintdate,
+      </if>
+      <if test="isabroad != null" >
+        isabroad,
+      </if>
+      <if test="ishubei != null" >
+        ishubei,
+      </if>
+      <if test="iwuhan != null" >
+        iwuhan,
+      </if>
+      <if test="inwuhan != null" >
+        inwuhan,
+      </if>
+      <if test="ishubeicontact != null" >
+        ishubeicontact,
+      </if>
+      <if test="iswuhancontact != null" >
+        iswuhancontact,
+      </if>
+      <if test="inhubei != null" >
+        inhubei,
+      </if>
+      <if test="isgotoschool != null" >
+        isgotoschool,
+      </if>
+      <if test="isdistrust != null" >
+        isdistrust,
+      </if>
+      <if test="isdiagnose != null" >
+        isdiagnose,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="stuno != null" >
+        #{stuno,jdbcType=VARCHAR},
+      </if>
+      <if test="stuname != null" >
+        #{stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="colleage != null" >
+        #{colleage,jdbcType=VARCHAR},
+      </if>
+      <if test="classname != null" >
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="fillintdate != null" >
+        #{fillintdate,jdbcType=VARCHAR},
+      </if>
+      <if test="isabroad != null" >
+        #{isabroad,jdbcType=CHAR},
+      </if>
+      <if test="ishubei != null" >
+        #{ishubei,jdbcType=CHAR},
+      </if>
+      <if test="iwuhan != null" >
+        #{iwuhan,jdbcType=CHAR},
+      </if>
+      <if test="inwuhan != null" >
+        #{inwuhan,jdbcType=CHAR},
+      </if>
+      <if test="ishubeicontact != null" >
+        #{ishubeicontact,jdbcType=CHAR},
+      </if>
+      <if test="iswuhancontact != null" >
+        #{iswuhancontact,jdbcType=CHAR},
+      </if>
+      <if test="inhubei != null" >
+        #{inhubei,jdbcType=CHAR},
+      </if>
+      <if test="isgotoschool != null" >
+        #{isgotoschool,jdbcType=CHAR},
+      </if>
+      <if test="isdistrust != null" >
+        #{isdistrust,jdbcType=CHAR},
+      </if>
+      <if test="isdiagnose != null" >
+        #{isdiagnose,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zywl.pojo.StuEpidemicExample" resultType="java.lang.Integer" >
+    select count(*) from stu_epidemic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update stu_epidemic
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.stuno != null" >
+        stuno = #{record.stuno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stuname != null" >
+        stuname = #{record.stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=CHAR},
+      </if>
+      <if test="record.colleage != null" >
+        colleage = #{record.colleage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classname != null" >
+        classname = #{record.classname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fillintdate != null" >
+        fillintdate = #{record.fillintdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isabroad != null" >
+        isabroad = #{record.isabroad,jdbcType=CHAR},
+      </if>
+      <if test="record.ishubei != null" >
+        ishubei = #{record.ishubei,jdbcType=CHAR},
+      </if>
+      <if test="record.iwuhan != null" >
+        iwuhan = #{record.iwuhan,jdbcType=CHAR},
+      </if>
+      <if test="record.inwuhan != null" >
+        inwuhan = #{record.inwuhan,jdbcType=CHAR},
+      </if>
+      <if test="record.ishubeicontact != null" >
+        ishubeicontact = #{record.ishubeicontact,jdbcType=CHAR},
+      </if>
+      <if test="record.iswuhancontact != null" >
+        iswuhancontact = #{record.iswuhancontact,jdbcType=CHAR},
+      </if>
+      <if test="record.inhubei != null" >
+        inhubei = #{record.inhubei,jdbcType=CHAR},
+      </if>
+      <if test="record.isgotoschool != null" >
+        isgotoschool = #{record.isgotoschool,jdbcType=CHAR},
+      </if>
+      <if test="record.isdistrust != null" >
+        isdistrust = #{record.isdistrust,jdbcType=CHAR},
+      </if>
+      <if test="record.isdiagnose != null" >
+        isdiagnose = #{record.isdiagnose,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update stu_epidemic
+    set id = #{record.id,jdbcType=BIGINT},
+      stuno = #{record.stuno,jdbcType=VARCHAR},
+      stuname = #{record.stuname,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=CHAR},
+      colleage = #{record.colleage,jdbcType=VARCHAR},
+      classname = #{record.classname,jdbcType=VARCHAR},
+      fillintdate = #{record.fillintdate,jdbcType=VARCHAR},
+      isabroad = #{record.isabroad,jdbcType=CHAR},
+      ishubei = #{record.ishubei,jdbcType=CHAR},
+      iwuhan = #{record.iwuhan,jdbcType=CHAR},
+      inwuhan = #{record.inwuhan,jdbcType=CHAR},
+      ishubeicontact = #{record.ishubeicontact,jdbcType=CHAR},
+      iswuhancontact = #{record.iswuhancontact,jdbcType=CHAR},
+      inhubei = #{record.inhubei,jdbcType=CHAR},
+      isgotoschool = #{record.isgotoschool,jdbcType=CHAR},
+      isdistrust = #{record.isdistrust,jdbcType=CHAR},
+      isdiagnose = #{record.isdiagnose,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zywl.pojo.StuEpidemic" >
+    update stu_epidemic
+    <set >
+      <if test="stuno != null" >
+        stuno = #{stuno,jdbcType=VARCHAR},
+      </if>
+      <if test="stuname != null" >
+        stuname = #{stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="colleage != null" >
+        colleage = #{colleage,jdbcType=VARCHAR},
+      </if>
+      <if test="classname != null" >
+        classname = #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="fillintdate != null" >
+        fillintdate = #{fillintdate,jdbcType=VARCHAR},
+      </if>
+      <if test="isabroad != null" >
+        isabroad = #{isabroad,jdbcType=CHAR},
+      </if>
+      <if test="ishubei != null" >
+        ishubei = #{ishubei,jdbcType=CHAR},
+      </if>
+      <if test="iwuhan != null" >
+        iwuhan = #{iwuhan,jdbcType=CHAR},
+      </if>
+      <if test="inwuhan != null" >
+        inwuhan = #{inwuhan,jdbcType=CHAR},
+      </if>
+      <if test="ishubeicontact != null" >
+        ishubeicontact = #{ishubeicontact,jdbcType=CHAR},
+      </if>
+      <if test="iswuhancontact != null" >
+        iswuhancontact = #{iswuhancontact,jdbcType=CHAR},
+      </if>
+      <if test="inhubei != null" >
+        inhubei = #{inhubei,jdbcType=CHAR},
+      </if>
+      <if test="isgotoschool != null" >
+        isgotoschool = #{isgotoschool,jdbcType=CHAR},
+      </if>
+      <if test="isdistrust != null" >
+        isdistrust = #{isdistrust,jdbcType=CHAR},
+      </if>
+      <if test="isdiagnose != null" >
+        isdiagnose = #{isdiagnose,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zywl.pojo.StuEpidemic" >
+    update stu_epidemic
+    set stuno = #{stuno,jdbcType=VARCHAR},
+      stuname = #{stuname,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=CHAR},
+      colleage = #{colleage,jdbcType=VARCHAR},
+      classname = #{classname,jdbcType=VARCHAR},
+      fillintdate = #{fillintdate,jdbcType=VARCHAR},
+      isabroad = #{isabroad,jdbcType=CHAR},
+      ishubei = #{ishubei,jdbcType=CHAR},
+      iwuhan = #{iwuhan,jdbcType=CHAR},
+      inwuhan = #{inwuhan,jdbcType=CHAR},
+      ishubeicontact = #{ishubeicontact,jdbcType=CHAR},
+      iswuhancontact = #{iswuhancontact,jdbcType=CHAR},
+      inhubei = #{inhubei,jdbcType=CHAR},
+      isgotoschool = #{isgotoschool,jdbcType=CHAR},
+      isdistrust = #{isdistrust,jdbcType=CHAR},
+      isdiagnose = #{isdiagnose,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

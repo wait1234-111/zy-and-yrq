@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>homepage</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+</head>
+<style type="text/css">
+    .headimgSize{
+        height: 30px;
+        width: 30px;
+        border-radius: 20px;
+        margin-right: 6px;
+    }
+
+</style>
+<body>
+
+<div class="layui-fluid layui-form">
+    <div class="layui-row layui-col-space12">
+        <div class="layui-col-md9">
+            <div class="layui-card" style="height: 670px">
+                <div class="layui-card-header">疫情情况上报(每日十点截止)</div>
+                <div class="layui-card-body">
+                    <div class="layui-form-item" style="margin-left: 95px;width: 830px;">
+                        <!--添加附件-->
+                        <div class="layui-card">
+                            <div class="layui-card-body">
+                               <!-- <h3>暂无通知</h3>-->
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 220px;">是否为中国留学生:</label>
+                                    <div class="layui-input-block">
+                                        <input type="checkbox" value="是" name="isabroad" lay-skin="switch" lay-text="是|否">
+                                    </div>
+                                </div> <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 220px;">是否为湖北籍(不含武汉学生):</label>
+                                    <div class="layui-input-block">
+                                        <input type="checkbox" value="是" name="ishubei" lay-skin="switch" lay-text="是|否">
+                                    </div>
+                                </div> <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 220px;">是否为武汉籍学生:</label>
+                                    <div class="layui-input-block">
+                                        <input type="checkbox" value="是" name="iwuhan" lay-skin="switch" lay-text="是|否">
+                                    </div>
+                                </div> <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 220px;">是否14天与湖北籍疫区人员接触过:</label>
+                                    <div class="layui-input-block">
+                                        <input type="checkbox"  value="是" name="ishubeicontact" lay-skin="switch" lay-text="是|否">
+                                    </div>
+                                </div> <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 220px;">是否14天与武汉籍疫区人员接触过:</label>
+                                    <div class="layui-input-block">
+                                        <input type="checkbox" value="是" name="iswuhancontact" lay-skin="switch" lay-text="是|否">
+                                    </div>
+                                </div> <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 220px;">是否在武汉:</label>
+                                    <div class="layui-input-block">
+                                        <input type="checkbox" value="是" name="inwuhan" lay-skin="switch" lay-text="是|否">
+                                    </div>
+                                </div> <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 220px;">是否在湖北(不含武汉):</label>
+                                    <div class="layui-input-block">
+                                        <input type="checkbox" value="是" name="inhubei" lay-skin="switch" lay-text="是|否">
+                                    </div>
+                                </div> <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 220px; color: red">是否为今天从外地返校:</label>
+                                    <div class="layui-input-block">
+                                        <input type="checkbox" value="是" name="isgotoschool" lay-skin="switch" lay-text="是|否">
+                                    </div>
+                                </div> <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 220px; color: red">是否有有疫情疑似请求:</label>
+                                    <div class="layui-input-block">
+                                        <input type="checkbox" value="是" name="isdistrust" lay-skin="switch" lay-text="是|否">
+                                    </div>
+                                </div> <div class="layui-form-item">
+                                    <label class="layui-form-label" style="width: 220px; color: red">是否为已经确认被感染:</label>
+                                    <div class="layui-input-block">
+                                        <input type="checkbox"  value="是" name="isdiagnose" lay-skin="switch" lay-text="是|否">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="formPost" style="width: 180px">立即上报</button>
+                                        <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md3">
+            <div class="layui-card" style="height: 670px;">
+                <div class="layui-card-header">系统日历</div>
+                <div class="layui-card-body">
+                    <div class="site-demo-laydate">
+                        <div class="layui-inline" id="showDate"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="/layuiadmin/layui/layui.js"></script>
+<script src="/layuiadmin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: '/lib/index' //主入口模块
+    }).use(['index', 'form', 'laydate', 'table','upload','jquery'], function () {
+        var $=layui.jquery;
+        var laydate = layui.laydate;
+        var table = layui.table;
+        var upload=layui.upload;
+        var form=layui.form;
+
+        //监听提交
+        form.on('submit(formPost)', function(data){
+            var datetime=new Date();
+
+            var hours = datetime.getHours()< 10 ? "0" + datetime.getHours() : datetime.getHours();
+            if (hours < 10){
+                //layer.msg(JSON.stringify(data.field));
+                //之前
+               // layer.msg(JSON.stringify(data.field));
+
+               $.ajax({
+                    url: "/epidemic/insert",
+                    type: 'post',
+                    data: data.field,
+                    success: function (result) {
+
+                        if (result==0) {
+                            layer.open({
+                                title:"提示",
+                                content:"登记失败，请重试!"
+                            });
+                        } else if (result>0) {
+                            layer.msg('登记成功', {
+                                offset: '15px'
+                                , icon: 1
+                                , time: 1000
+                            }, function () {
+                                //重新渲染
+                                form.render('checkbox');
+                            });
+
+                        }else {
+                            layer.open({
+                                title:"提示",
+                                content:"登记失败，今日已经提交，请勿重复提交!"
+                            });
+                        }
+
+                    }
+                });
+            }else {
+              layer.open({
+                  title:"提示",
+                  content:"超过10点不允许上报数据！请联系老师"
+              });
+            }
+
+
+            return false;
+        });
+
+        //直接嵌套显示
+        laydate.render({
+             elem: '#showDate'
+            , position: 'static'
+            , btns: ['now']
+            , calendar: true//显示节假日
+        });
+    });
+</script>
+
+</body>
+</html>

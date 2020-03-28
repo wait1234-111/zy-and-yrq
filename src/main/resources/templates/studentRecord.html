@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生记录</title>
+    <link rel="stylesheet" href="/css/layui.css">
+</head>
+<body>
+
+
+    <!--  查看数据  -->
+    <div id="StudentDetail" style="display: none;margin-top: 20px;">
+
+    </div>
+
+    <!--  搜索  -->
+    <div class="layui-form layui-card-header" style="height:130px;margin-top: 20px;margin-bottom: 50px">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">所属院系</label>
+                <div class="layui-input-block" style="width: 180px;">
+                    <select id="colleage"name="colleage" >
+                        <option value="" selected></option>
+                        <option value="计算机科学与工程学院">计算机科学与工程学院</option>
+                        <option value="马克思主义学院">马克思主义学院</option>
+                        <option value="物电学院">物电学院</option>
+                        <option value="物电学院">外国语学院</option>
+                        <option value="传媒学院">传媒学院</option>
+                        <option value="数学与统计学院">数学与统计学院</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">班级名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="classname" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">学号</label>
+                <div class="layui-input-block">
+                    <input type="text"  name="stuno" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">姓名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="stuname" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label" style="width: 50px;margin-left: 20px;">留学生:</label>
+                   <div class="layui-input-block" style="width: 60px;">
+                    <select id="isabroad"name="isabroad" >
+                        <option value="" selected></option>
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                   </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label" style="width: 50px;">湖北籍:</label>
+                <div class="layui-input-block" style="width: 60px;">
+                    <select id="ishubei"name="ishubei" >
+                        <option value="" selected></option>
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="width: 50px;">武汉籍</label>
+                <div class="layui-input-block" style="width: 60px;">
+
+                    <select id="iwuhan"name="iwuhan" >
+                        <option value="" selected></option>
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label" style="width: 50px;">在武汉:</label>
+                <div class="layui-input-block" style="width: 60px;">
+                    <select id="inwuhan"name="inwuhan"  >
+                        <option value="" selected></option>
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label" style="width: 50px;">在湖北</label>
+                <div class="layui-input-block" style="width: 60px;" >
+                    <select id="inhubei"name="inhubei" >
+                        <option value="" selected></option>
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="width: 50px; color: red">返校:</label>
+                <div class="layui-input-block" style="width: 60px;">
+                    <select id="isgotoschool"name="isgotoschool"  >
+                        <option value="" selected></option>
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="width: 50px; color: red">疑似:</label>
+                <div class="layui-input-block" style="width: 60px;">
+                    <select id="isdistrust"name="isdistrust" >
+                        <option value="" selected></option>
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="width: 50px; color: red">确诊:</label>
+                <div class="layui-input-block" style="width: 60px;">
+                    <select id="isdiagnose"name="isdiagnose" >
+                        <option value="" selected></option>
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="width: 80px;">与武汉接触:</label>
+                <div class="layui-input-block" style="width: 60px;">
+                    <select id="ishubeicontact"name="ishubeicontact" >
+                        <option value="" selected></option>
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="width: 80px;">与湖北接触:</label>
+                <div class="layui-input-block" style="width: 60px;">
+                    <select id="iswuhancontact"name="iswuhancontact" >
+                        <option value="" selected></option>
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <button class="layui-btn " lay-submit lay-filter="LAY-user-back-search">
+                    <i class="layui-icon layui-icon-search "></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!--  数据表格  -->
+    <table class="layui-hide" id="studentTable" lay-filter="studentTable" style="padding-top: 300px;">
+    </table>
+
+    <script src='/layuiadmin/layui/layui.js'></script>
+
+    <script type='text/javascript'>
+        layui.config({
+            base: '/layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: '/lib/index' //主入口模块
+        }).use(['jquery', 'layer', 'form', 'table', 'upload'], function () {
+            var $ = layui.jquery;
+            var layer = layui.layer;
+            var form = layui.form;
+            var table = layui.table;
+            var upload = layui.upload;
+
+            // 数据分页显示
+            table.render({
+                id: 'studentTable'
+                , elem: '#studentTable'
+                , height: 550
+                , toolbar: '#studentToolBar'
+                , defaultToolbar: ['filter', 'print', 'exports']
+                , url: '/epidemic/student/all' //数据接口
+                , page: true //开启分页
+                , cols: [
+                    [ //表头
+                        {type: 'checkbox', fixed: 'left'}
+                        , {field: 'id', title: 'ID', sort: true, align: 'center'}
+                        , {field: 'stuno', title: '学号', sort: true, align: 'center'}
+                        , {field: 'stuname', title: '姓名', sort: true, width: 80, align: 'center'}
+                        , {field: 'colleage', title: '院系名称', sort: true, align: 'center'}
+                        , {field: 'classname', title: '班级名称', sort: true, align: 'center'}
+                        , {field: 'fillintdate', title: '填表日期', sort: true, align: 'center'}
+                        , {field: 'isabroad', title: '是否留学生', sort: true, align: 'center'}
+                        , {field: 'ishubei', title: '是否湖北籍(不含武汉学生)', sort: true, align: 'center'}
+                        , {field: 'iwuhan', title: '是否武汉籍', sort: true, align: 'center'}
+                        , {field: 'inwuhan', title: '是否在武汉', sort: true, align: 'center'}
+                        , {field: 'ishubeicontact', title: '14天与湖北籍疫区人员接触过', sort: true, align: 'center'}
+                        , {field: 'iswuhancontact', title: '14天与武汉籍疫区人员接触过', sort: true, align: 'center'}
+                        , {field: 'inhubei', title: '是否在湖北', sort: true, align: 'center'}
+                        , {field: 'isgotoschool', title: '是否今天从外地返校', sort: true, align: 'center'}
+                        , {field: 'isdistrust', title: '是否疑似病例', sort: true, align: 'center'}
+                        , {field: 'isdiagnose', title: '是否确诊', sort: true, align: 'center'}
+
+                    ]
+                ]
+            });
+
+            // 搜索框
+            form.on('submit(LAY-user-back-search)', function(data){
+                var field = data.field //当前容器的全部表单字段，名值对形式：{name: value}
+                console.log(field);
+                table.reload('studentTable', {
+                    where: field
+                });
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
